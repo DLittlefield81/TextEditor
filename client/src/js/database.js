@@ -18,13 +18,13 @@ export const putDb = async (content) => {
   const db = await openDB('jate', 1);
   const tx = db.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.add({ todo: content });
+  const request = store.put({ todo: content }); //<<<<<<<<<<<<<<<<<<<<store.put
   const result = await request;
   console.log('🚀 - data saved to the database', result);
 };
 
 // TODO: Add logic for a method that gets all the content from the database
-export const getAllDb = async () => {
+export const getDb = async () => {
   console.log('GET all from the database');
   const db = await openDB('jate', 1);
   const tx = db.transaction('jate', 'readonly');
